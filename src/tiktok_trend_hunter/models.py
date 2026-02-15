@@ -1,6 +1,6 @@
 """Data models for the TikTok Trend Hunter."""
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class ProductData(BaseModel):
@@ -111,5 +111,4 @@ class ActorInput(BaseModel):
     include_review_analysis: bool = Field(default=True, alias="includeReviewAnalysis")
     min_sales_count: int = Field(default=100, ge=0, alias="minSalesCount")
 
-    class Config:
-        populate_by_name = True
+    model_config = ConfigDict(populate_by_name=True)
