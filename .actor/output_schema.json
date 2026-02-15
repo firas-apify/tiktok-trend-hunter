@@ -1,0 +1,13 @@
+{
+    "actorOutputSchemaVersion": 1,
+    "title": "Product Analysis Results",
+    "description": "AI-analyzed TikTok Shop products with virality scores and marketing insights",
+    "properties": {
+        "productAnalysis": {
+            "title": "Product Analysis Dataset",
+            "description": "Dataset containing analyzed products with virality scores, marketing angles, and ad hooks",
+            "type": "string",
+            "template": "{{links.apiDefaultDatasetUrl}}"
+        }
+    }
+}
