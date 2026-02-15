@@ -1,0 +1,59 @@
+{
+    "title": "TikTok Trend Hunter Input",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "category": {
+            "title": "Product Category",
+            "type": "string",
+            "description": "The TikTok Shop category to analyze (e.g., 'Kitchen Gadgets', 'Beauty', 'Electronics')",
+            "editor": "textfield",
+            "default": "Kitchen Gadgets"
+        },
+        "maxProducts": {
+            "title": "Maximum Products",
+            "type": "integer",
+            "description": "Maximum number of products to analyze (1-50)",
+            "default": 10,
+            "minimum": 1,
+            "maximum": 50
+        },
+        "aiProvider": {
+            "title": "AI Provider",
+            "type": "string",
+            "description": "Choose the AI provider for analysis",
+            "editor": "select",
+            "default": "anthropic",
+            "enum": ["anthropic", "openai"],
+            "enumTitles": ["Anthropic (Claude)", "OpenAI (GPT-4)"]
+        },
+        "anthropicApiKey": {
+            "title": "Anthropic API Key",
+            "type": "string",
+            "description": "Your Anthropic API key (required if using Anthropic)",
+            "editor": "textfield",
+            "isSecret": true
+        },
+        "openaiApiKey": {
+            "title": "OpenAI API Key",
+            "type": "string",
+            "description": "Your OpenAI API key (required if using OpenAI)",
+            "editor": "textfield",
+            "isSecret": true
+        },
+        "includeReviewAnalysis": {
+            "title": "Include Review Analysis",
+            "type": "boolean",
+            "description": "Analyze product reviews for sentiment and emotional triggers",
+            "default": true
+        },
+        "minSalesCount": {
+            "title": "Minimum Sales Count",
+            "type": "integer",
+            "description": "Only analyze products with at least this many sales",
+            "default": 100,
+            "minimum": 0
+        }
+    },
+    "required": ["category", "maxProducts"]
+}
