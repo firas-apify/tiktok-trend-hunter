@@ -23,9 +23,23 @@
             "type": "string",
             "description": "Choose the AI provider for analysis",
             "editor": "select",
-            "default": "anthropic",
-            "enum": ["anthropic", "openai"],
-            "enumTitles": ["Anthropic (Claude)", "OpenAI (GPT-4)"]
+            "default": "openrouter",
+            "enum": ["openrouter", "anthropic", "openai"],
+            "enumTitles": ["OpenRouter (Free models)", "Anthropic (Claude)", "OpenAI (GPT-4)"]
+        },
+        "openrouterApiKey": {
+            "title": "OpenRouter API Key",
+            "type": "string",
+            "description": "Your OpenRouter API key (get free at openrouter.ai)",
+            "editor": "textfield",
+            "isSecret": true
+        },
+        "openrouterModel": {
+            "title": "OpenRouter Model",
+            "type": "string",
+            "description": "Model to use (default: nvidia/nemotron-nano-9b-v2:free)",
+            "editor": "textfield",
+            "default": "nvidia/nemotron-nano-9b-v2:free"
         },
         "anthropicApiKey": {
             "title": "Anthropic API Key",

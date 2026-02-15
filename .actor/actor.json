@@ -3,7 +3,7 @@
     "name": "tiktok-trend-hunter",
     "title": "TikTok Shop Viral Product Finder & AI Analyzer",
     "description": "Discover winning products before they go viral. This AI-powered Actor scrapes TikTok Shop trending products, analyzes reviews for emotional triggers, and generates virality scores (0-100), marketing angles, and ad hooks. Perfect for dropshippers, e-commerce sellers, and content creators looking for the next big opportunity.",
-    "version": "0.4",
+    "version": "0.5",
     "icon": "./logo.png",
     "buildTag": "latest",
     "categories": ["E-COMMERCE", "MARKETING", "AI"],
