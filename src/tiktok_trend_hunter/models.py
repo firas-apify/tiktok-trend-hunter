@@ -105,9 +105,11 @@ class ActorInput(BaseModel):
 
     category: str = "Kitchen Gadgets"
     max_products: int = Field(default=10, ge=1, le=50, alias="maxProducts")
-    ai_provider: str = Field(default="anthropic", alias="aiProvider")
+    ai_provider: str = Field(default="openrouter", alias="aiProvider")
     anthropic_api_key: str | None = Field(default=None, alias="anthropicApiKey")
     openai_api_key: str | None = Field(default=None, alias="openaiApiKey")
+    openrouter_api_key: str | None = Field(default=None, alias="openrouterApiKey")
+    openrouter_model: str | None = Field(default=None, alias="openrouterModel")
     include_review_analysis: bool = Field(default=True, alias="includeReviewAnalysis")
     min_sales_count: int = Field(default=100, ge=0, alias="minSalesCount")
 

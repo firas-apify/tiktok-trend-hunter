@@ -52,13 +52,16 @@ class ProductAnalyzer:
 
     def __init__(
         self,
-        provider: str = "anthropic",
+        provider: str = "openrouter",
         anthropic_api_key: str | None = None,
         openai_api_key: str | None = None,
+        openrouter_api_key: str | None = None,
+        openrouter_model: str = "nvidia/nemotron-nano-9b-v2:free",
     ):
         self.provider = provider
         self._anthropic_client: Anthropic | None = None
         self._openai_client: OpenAI | None = None
+        self._model: str | None = None
 
         if provider == "anthropic":
             if not anthropic_api_key:
@@ -68,6 +71,14 @@ class ProductAnalyzer:
             if not openai_api_key:
                 raise ValueError("OpenAI API key is required")
             self._openai_client = OpenAI(api_key=openai_api_key)
+        elif provider == "openrouter":
+            if not openrouter_api_key:
+                raise ValueError("OpenRouter API key is required")
+            self._openai_client = OpenAI(
+                api_key=openrouter_api_key,
+                base_url="https://openrouter.ai/api/v1",
+            )
+            self._model = openrouter_model
         else:
             raise ValueError(f"Unknown AI provider: {provider}")
 
@@ -131,6 +142,14 @@ class ProductAnalyzer:
             elif self.provider == "openai" and self._openai_client:
                 response = self._openai_client.chat.completions.create(
                     model="gpt-4o",
+                    max_tokens=1024,
+                    messages=[{"role": "user", "content": prompt}],
+                )
+                response_text = response.choices[0].message.content or ""
+
+            elif self.provider == "openrouter" and self._openai_client:
+                response = self._openai_client.chat.completions.create(
+                    model=self._model or "meta-llama/llama-3.3-8b-instruct:free",
                     max_tokens=1024,
                     messages=[{"role": "user", "content": prompt}],
                 )
